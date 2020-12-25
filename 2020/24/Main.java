@@ -8,12 +8,12 @@ import static java.lang.System.*;
 public class Main {
 
     public Main() throws Exception {
-        boolean[][] map = new boolean[200][200];
+        boolean[][] map = new boolean[1000][1000];
         int ans = 0;
         while (in.hasNext()) {
             String l = in.next();
-            int x = 100;
-            int y = 100;
+            int x = 500;
+            int y = 500;
             while (!l.isEmpty()) {
                 if (l.startsWith("e")) {
                     x += 2;
@@ -47,12 +47,12 @@ public class Main {
 
         int ans2 = 0;
         for (int i=0; i<100; i++) {
-            boolean[][] next = new boolean[200][200];
+            boolean[][] next = new boolean[1000][1000];
             ans2 = 0;
-            for (int x=2; x<198; x++) for (int y=2; y<198; y++) if (((x^y)&1)==0) {
+            for (int x=2; x<998; x++) for (int y=2; y<998; y++) if (((x^y)&1)==0) {
                 next[x][y] = map[x][y];
                 int b = 0;
-                for (int dx=-2; dx<=2; dx++) for (int dy=-2; dy<=2; dy++) if (abs(dx)+abs(dy)==2) {
+                for (int dx=-2; dx<=2; dx++) for (int dy=-1; dy<=1; dy++) if (abs(dx)+abs(dy)==2) {
                     if (map[x+dx][y+dy]) b++;
                 }
                 if (map[x][y] && (b==0 || b>2)) next[x][y] = false;
@@ -60,7 +60,6 @@ public class Main {
                 if (next[x][y]) ans2++;
             }
             map = next;
-            debug(i, ans2);
         }
         System.out.println(ans2);
     }

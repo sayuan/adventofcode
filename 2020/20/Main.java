@@ -55,6 +55,8 @@ public class Main {
             br.readLine();      // empty
         }
 
+        debug(counts.values());
+
         long ans = 1;
         for (Map.Entry<Integer, int[]> entry:patsMap.entrySet()) {
             int[] pats = entry.getValue();
